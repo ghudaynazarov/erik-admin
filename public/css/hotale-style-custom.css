@@ -9496,7 +9496,7 @@ html :where(img[class*='wp-image-']) {
 #read-more-btn-added > label {
   position: absolute;
   bottom: 53px;
-  left: 33%;
+  left: 38%;
   padding: 0.5em;
   background-color: #fb3007;
   color: white;
