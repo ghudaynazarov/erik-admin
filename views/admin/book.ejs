@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <div class="admin-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Admin Panel</h2>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="/admin/admin-product" data-section="dashboard">Admin</a></li>
+            <li><a href="/admin/add-product" data-section="users">Add Product</a></li>
+            <li><a href="/admin/reserv" data-section="users">Reservation</a></li>
+            <li><a href="/admin/book" data-section="products" class="active">Book</a></li>
+            <li><a href="/admin/review" data-section="products">Review</a></li> 
+          </ul>
+        </nav>
+      </aside>
+      <main class="main-content">
+        <%- include('../include/header.ejs') %> 
+        <div id="content" class="content">
+          <div id="dashboard" class="section active">
+            <h2>Books</h2>
+            <div class="stats-grid">
+              <% if(prods.length > 0 ) {%>
+              <% for(let product of prods) { %>
+              <div class="stat-card">
+                <h4>Check_in</h4>
+                <p><%= product.checkIn %></p>
+
+                <h4>Check_out</h4>
+                <p><%= product.checkOut %></p>
+
+                <h4>Room</h4>
+                <p><%= product.room %></p>
+
+                <h4>Guests</h4>
+                <p><%= product.guests %></p>
+
+                <h4>Phone number</h4>
+                <p><%= product.phonenumber %></p>
+                <br>
+                <div class="button-container">
+                  <form action="/admin/refuse-book" method="post">
+                    <input type="hidden" value="<%= product.id %>" name="prodId">
+                    <input type="hidden" value="<%= product.email %>" name="email">
+                    <button>Cancel</button>
+                  </form>
+                  <br>
+                  <form action="/admin/accept-book" method="post">
+                    <input type="hidden" value="<%= product.id %>" name="prodId">
+                    <input type="hidden" value="<%= product.email %>" name="email">
+                    <button>OK</button>
+                  </form>
+                </div>
+              </div>
+              <% } %>
+              <% }else{ %>
+                <h3>There is no product.</h3>
+                <% } %>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/js/counter.js"></script>
+    <script src="/js/admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <div class="admin-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Admin Panel</h2>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="/amdin/admin-product" data-section="dashboard" class="active">Admin</a></li>
+            <li><a href="/admin/add-product" data-section="users">Add Product</a></li>
+            <li><a href="/admin/reserv" data-section="users">Reservation</a></li>
+            <li><a href="/admin/book" data-section="products">Book</a></li>
+            <li><a href="/admin/review" data-section="products">Review</a></li> 
+          </ul>
+        </nav>
+      </aside> 
+      <main class="main-content">
+        <%- include('../include/header.ejs') %> 
+        <div id="content" class="content">
+          <div id="users" class="section active">
+            <h2>Site Name</h2>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Img</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(prods.length > 0 ) { %>
+                  <% for (let product of prods) { %>
+                    <% if(product.option === 'Main Properties') { %>
+                      <tr>
+                        <td><img style="height: 50px; width: 50px;" src="/<%= product.image %>" alt="<%= product.title %>"></td>
+                        <td><%= product.title %></td>
+                        <td><%= product.description %></td>
+                        <td><button><a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <form action="/admin/delete-product" method="post">
+                          <input type="hidden" value="<%= product.id %>" name="productId">
+                          <button class="btn" style="background-color: red;">delete</button>
+                          </form>
+                        </td>
+                      </tr>
+                    <% } %>
+                  <% } %>
+                <% } else { %>
+                  <h1>No Products Found!</h1>
+                <% } %>
+              </tbody>
+            </table>
+
+            <h2>Gallery</h2>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Img</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(prods.length > 0 ) { %>
+                  <% for (let product of prods) { %>
+                    <% if(product.option === 'Gallery') { %>
+                      <tr>
+                        <td><img style="height: 50px; width: 50px;" src="/<%= product.image %>" alt="<%= product.title %>"></td>
+                        <td><%= product.title %></td>
+                        <td><%= product.description %></td>
+                        <td><button><a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <form action="/admin/delete-product" method="POST">
+                          <input type="hidden" value="<%= product.id %>" name="productId">
+                          <button class="btn" style="background-color: red;">delete</button>
+                          </form>
+                        </td>
+                      </tr>
+                    <% } %>
+                  <% } %>
+                <% } else { %>
+                  <h1>No Products Found!</h1>
+                <% } %>
+              </tbody>
+            </table>
+
+            <h2>History of Dashoguz</h2>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Img</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(prods.length > 0 ) { %>
+                  <% for (let product of prods) { %>
+                    <% if(product.option === 'History of Dashoguz') { %>
+                      <tr>
+                        <td><img style="height: 50px; width: 50px;" src="/<%= product.image %>" alt="<%= product.title %>"></td>
+                        <td><%= product.title %></td>
+                        <td><%= product.description %></td>
+                        <td><button><a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <form action="/admin/delete-product" method="POST">
+                          <input type="hidden" value="<%= product.id %>" name="productId">
+                          <button class="btn" style="background-color: red;">delete</button>
+                          </form>
+                        </td>
+                      </tr>
+                    <% } %>
+                  <% } %>
+                <% } else { %>
+                  <h1>No Products Found!</h1>
+                <% } %>
+              </tbody>
+            </table>
+
+            <h2>Comments</h2>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Img</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(prods.length > 0 ) { %>
+                  <% for (let product of prods) { %>
+                    <% if(product.option === 'Comment') { %>
+                      <tr>
+                        <td><img style="height: 50px; width: 50px;" src="/<%= product.image %>" alt="<%= product.title %>"></td>
+                        <td><%= product.title %></td>
+                        <td><%= product.description %></td>
+                        <td><button><a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <form action="/admin/delete-product" method="POST">
+                          <input type="hidden" value="<%= product.id %>" name="productId">
+                          <button class="btn" style="background-color: red;">delete</button>
+                          </form>
+                        </td>
+                      </tr>
+                    <% } %>
+                  <% } %>
+                <% } else { %>
+                  <h1>No Products Found!</h1>
+                <% } %>
+              </tbody>
+            </table>
+
+            <h2>Museum</h2>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Img</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(prods.length > 0 ) { %>
+                  <% for (let product of prods) { %>
+                    <% if(product.option === 'Museum') { %>
+                      <tr>
+                        <td><img style="height: 50px; width: 50px;" src="/<%= product.image %>" alt="<%= product.title %>"></td>
+                        <td><%= product.title %></td>
+                        <td><%= product.description %></td>
+                        <td><button><a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <form action="/admin/delete-product" method="POST">
+                          <input type="hidden" value="<%= product.id %>" name="productId">
+                          <button class="btn" style="background-color: red;">delete</button>
+                          </form>
+                        </td>
+                      </tr>
+                    <% } %>
+                  <% } %>
+                <% } else { %>
+                  <h1>No Products Found!</h1>
+                <% } %>
+              </tbody>
+            </table>
+
+            <h2>Room</h2>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Img</th>
+                  <th>Title</th>
+                  <th>Price</th>
+                  <th>Guest number</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(prods.length > 0 ) { %>
+                  <% for (let product of rooms) { %>
+                      <tr>
+                        <td><img style="height: 50px; width: 50px;" src="/<%= product.image %>" alt="<%= product.title %>"></td>
+                        <td><%= product.title %></td>
+                        <td><%= product.price %> $</td>
+                        <td><%= product.guestNum %></td>
+                        <td><%= product.description %></td>
+                        <td><button><a href="/admin/edit-room/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <form action="/admin/delete-room" method="POST">
+                          <input type="hidden" value="<%= product.id %>" name="productId">
+                          <button class="btn" style="background-color: red;">delete</button>
+                          </form>
+                        </td>
+                      </tr>
+                  <% } %>
+                <% } else { %>
+                  <h1>No Products Found!</h1>
+                <% } %>
+              </tbody>
+            </table>
+
+            <h2>Address</h2>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Address</th>
+                  <th>Phone_number</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(prods.length > 0 ) { %>
+                  <% for (let product of address) { %>
+                      <tr>
+                        <td><%= product.address %></td>
+                        <td><%= product.phone_number %></td>
+                        <td><%= product.email %></td>
+                        <td><button><a href="/admin/edit-address/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <form action="/admin/delete-address" method="POST">
+                          <input type="hidden" value="<%= product.id %>" name="productId">
+                          <button class="btn" style="background-color: red;">delete</button>
+                          </form>
+                        </td>
+                      </tr>
+                  <% } %>
+                <% } else { %>
+                  <h1>No Products Found!</h1>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

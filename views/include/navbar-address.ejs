@@ -1,0 +1,13 @@
+<div class="hotale-top-bar-left hotale-item-pdlr">
+    <div class="hotale-top-bar-left-text">
+        <% for(let product of address) { %>
+            <a href="#<%= product.email %>" style="color: #94959b; font-size: 16px"
+            ><%= product.email %></a
+            >
+            <a href="tel:<%= product.phone_number %>" style="margin-left: 20px; color: #fb3007"
+            ><%= product.phone_number %></a
+            >
+        <% break %>
+        <% } %>
+    </div>
+</div>

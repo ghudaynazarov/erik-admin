@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <div class="admin-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Admin Panel</h2>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="/admin/admin-product" data-section="dashboard">Admin</a></li>
+            <li><a href="/admin/add-product" data-section="users">Add Product</a></li>
+            <li><a href="/admin/reserv" data-section="users" class="active">Reservation</a></li>
+            <li><a href="/admin/book" data-section="products">Book</a></li>
+            <li><a href="/admin/review" data-section="products">Review</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="main-content">
+        <%- include('../include/header.ejs') %> 
+        <div id="content" class="content">
+          <div id="dashboard" class="section active">
+            <h2>Reservation</h2>
+            <div class="stats-grid">
+                <% for(let product of prods) { %>
+                    <div class="stat-card">
+                        <h4>Name</h4>
+                        <p><%= product.name %></p>
+                        
+                        <h4>Email</h4>
+                        <p><%= product.email %></p>
+                        
+                        <h4>Message</h4>
+                        <p><%= product.message %></p>
+                        <div class="button-container">
+                          <form action="/admin/refuse-reserv" method="post">
+                            <input type="hidden" value="<%= product.id %>" name="prodId">
+                            <input type="hidden" value="<%= product.email %>" name="email">
+                            <button>Cancel</button>
+                          </form>
+                          <form action="/admin/accept-reserv" method="post">
+                            <input type="hidden" value="<%= product.id %>" name="prodId">
+                            <input type="hidden" value="<%= product.email %>" name="email">
+                            <button>OK</button>
+                          </form>
+                        </div>
+                        </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
