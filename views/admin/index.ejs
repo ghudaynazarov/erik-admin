@@ -16,7 +16,7 @@
         </div>
         <nav class="sidebar-nav">
           <ul>
-            <li><a href="/amdin/admin-product" data-section="dashboard" class="active">Admin</a></li>
+            <li><a href="/admin/admin-product" data-section="dashboard" class="active">Admin</a></li>
             <li><a href="/admin/add-product" data-section="users">Add Product</a></li>
             <li><a href="/admin/reserv" data-section="users">Reservation</a></li>
             <li><a href="/admin/book" data-section="products">Book</a></li>
@@ -45,7 +45,9 @@
                         <td><img style="height: 50px; width: 50px;" src="/<%= product.image %>" alt="<%= product.title %>"></td>
                         <td><%= product.title %></td>
                         <td><%= product.description %></td>
-                        <td><button><a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a>
+                        </td>
                         <td>
                           <form action="/admin/delete-product" method="post">
                           <input type="hidden" value="<%= product.id %>" name="productId">
@@ -78,7 +80,9 @@
                         <td><img style="height: 50px; width: 50px;" src="/<%= product.image %>" alt="<%= product.title %>"></td>
                         <td><%= product.title %></td>
                         <td><%= product.description %></td>
-                        <td><button><a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a>
+                        </td>
                         <td>
                           <form action="/admin/delete-product" method="POST">
                           <input type="hidden" value="<%= product.id %>" name="productId">
@@ -111,7 +115,9 @@
                         <td><img style="height: 50px; width: 50px;" src="/<%= product.image %>" alt="<%= product.title %>"></td>
                         <td><%= product.title %></td>
                         <td><%= product.description %></td>
-                        <td><button><a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a>
+                        </td>
                         <td>
                           <form action="/admin/delete-product" method="POST">
                           <input type="hidden" value="<%= product.id %>" name="productId">
@@ -144,7 +150,9 @@
                         <td><img style="height: 50px; width: 50px;" src="/<%= product.image %>" alt="<%= product.title %>"></td>
                         <td><%= product.title %></td>
                         <td><%= product.description %></td>
-                        <td><button><a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a>
+                        </td>
                         <td>
                           <form action="/admin/delete-product" method="POST">
                           <input type="hidden" value="<%= product.id %>" name="productId">
@@ -177,7 +185,9 @@
                         <td><img style="height: 50px; width: 50px;" src="/<%= product.image %>" alt="<%= product.title %>"></td>
                         <td><%= product.title %></td>
                         <td><%= product.description %></td>
-                        <td><button><a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <a href="/admin/edit-product/<%= product.id %>?edit=true" class="btn">edit</a>
+                        </td>
                         <td>
                           <form action="/admin/delete-product" method="POST">
                           <input type="hidden" value="<%= product.id %>" name="productId">
@@ -213,7 +223,9 @@
                         <td><%= product.price %> $</td>
                         <td><%= product.guestNum %></td>
                         <td><%= product.description %></td>
-                        <td><button><a href="/admin/edit-room/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <a href="/admin/edit-room/<%= product.id %>?edit=true" class="btn">edit</a>
+                        </td>
                         <td>
                           <form action="/admin/delete-room" method="POST">
                           <input type="hidden" value="<%= product.id %>" name="productId">
@@ -244,7 +256,9 @@
                         <td><%= product.address %></td>
                         <td><%= product.phone_number %></td>
                         <td><%= product.email %></td>
-                        <td><button><a href="/admin/edit-address/<%= product.id %>?edit=true" class="btn">edit</a></button></td>
+                        <td>
+                          <a href="/admin/edit-address/<%= product.id %>?edit=true" class="btn">edit</a>
+                        </td>
                         <td>
                           <form action="/admin/delete-address" method="POST">
                           <input type="hidden" value="<%= product.id %>" name="productId">

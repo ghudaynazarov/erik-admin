@@ -29,6 +29,10 @@ exports.getIndex = async (req, res, next) => {
                 // csrfToken: res.locals.csrfToken
             });
         })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/500');
+        });
 
 };
     
@@ -44,6 +48,10 @@ exports.getSingleRoom = async (req, res, next) => {
                 // csrfToken: res.locals.csrfToken
             });
         })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/500');
+        });
 
 };
 
@@ -59,6 +67,10 @@ exports.getGallery = async (req, res, next) => {
                 // csrfToken: res.locals.csrfToken
             });
         })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/500');
+        });
 
 };
 
@@ -74,6 +86,10 @@ exports.getHistory = async (req, res, next) => {
                 // csrfToken: res.locals.csrfToken
             });
         })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/500');
+        });
 
 };
 
@@ -88,6 +104,10 @@ exports.getComment = async (req, res, next) => {
                 path: '/comment',
                 // csrfToken: res.locals.csrfToken
             });
+        })
+        .catch(err =>{
+            console.log(err);
+            res.redirect('/500');
         })
 
 };
@@ -110,6 +130,7 @@ exports.postReservation = async (req, res, next) => {
     })
     .catch(err => {
         console.log(err);
+        res.redirect('/500');
     })
 };
 
@@ -128,6 +149,7 @@ exports.postReview = async (req, res, next) => {
     })
     .catch(err => {
         console.log(err);
+        res.redirect('/500');
     });
 }
 
@@ -152,5 +174,6 @@ exports.postBook = async (req, res, next) => {
     })
     .catch(err => {
         console.log(err);
+        res.redirect('/500');
     });
 }

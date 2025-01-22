@@ -12,9 +12,8 @@ router.get('/login', authController.getLogin);
 router.post('/login',
     [
         body('email')
-        .isEmail()
-        .withMessage('Please enter a valid email address.')
-        .normalizeEmail(),
+        .isLength({min: 2})
+        .withMessage('Please enter a valid email address.'),
         body('password', 'Password has to be valid.')
         .isLength({
             min: 3

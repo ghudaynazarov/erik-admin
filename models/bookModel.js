@@ -14,6 +14,8 @@ const Book = sequelize.define("book", {
   guests: Sequelize.STRING, 
   room: Sequelize.INTEGER,
   phonenumber: Sequelize.STRING,
+  history: {type: Sequelize.BOOLEAN, defaultValue: false},
+  status: {type: Sequelize.STRING}
 });
 
 module.exports = Book;

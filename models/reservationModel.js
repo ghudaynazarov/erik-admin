@@ -11,7 +11,9 @@ const Reservation = sequelize.define("reservation", {
 },
   name: Sequelize.STRING,
   email: Sequelize.STRING,
-  message: Sequelize.STRING
+  message: Sequelize.STRING,
+  history: {type: Sequelize.BOOLEAN, defaultValue: false},
+  status: {type: Sequelize.STRING}
 });
 
 module.exports = Reservation;

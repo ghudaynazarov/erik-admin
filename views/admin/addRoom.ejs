@@ -33,9 +33,22 @@
           <div id="settings" class="section active">
             <h2>Add Room</h2>
             <form class="settings-form" action="/admin/<% if(editing) {%>edit-room<% }else{ %>add-room<% } %>" method="POST" enctype="multipart/form-data">
-                <button><a href="/admin/add-product">Add Product</a></button>
+              <select style="font-size: medium;" id="option" name="option" onchange="handleSelect()">
+                <% if(editing){ %>
+                  <option value="<%= product.option %>">
+                      <%= product.option %>
+                  </option>
+                  <% } %>
+                  <option onclick="room()" value="Room">Room</option>
+                  <option data-url="/admin/add-product" value="Main Properties">Main Properties</option>
+                  <option data-url="/admin/add-product" value="Gallery">Gallery</option>
+                  <option data-url="/admin/add-product" value="History of Dashoguz">History of Dashoguz</option>
+                  <option data-url="/admin/add-product" value="Comment">Comment</option>
+                  <option data-url="/admin/add-product" value="Museum">Museum</option>
+                  <option data-url="/admin/add-address" value="Address">Address</option>
+              </select>
 
-                <select id="lang" name="lang">
+                <select style="font-size: medium;" id="lang" name="lang">
                   <% if(editing){ %>
                     <option value="<%= product.lang %>">
                         <%= product.lang %>
@@ -47,36 +60,32 @@
 
               <div class="form-group" id="title">
                 <label>Name</label>
-                <input type="text" name="title" value="<% if(editing) { %><%= product.title %><% } %>" id="title" placeholder="Enter name">
+                <input type="text" name="title" value="<% if(editing) { %><%= product.title %><% } %>" id="title" placeholder="Enter name" required>
               </div>
 
               <div class="form-group" id="description">
                 <label>Description</label>
-                <input type="text" name="description" value="<% if(editing) { %><%= product.description %><% } %>" id="description" placeholder="Enter Description">
+                <input type="text" name="description" value="<% if(editing) { %><%= product.description %><% } %>" id="description" placeholder="Enter Description" required>
               </div>
 
               <div class="form-group" id="image">
                 <label>Image</label>
-                <% if(editing) {%>
-                  <input type="text" name="image" id="image" value="<%= product.image %>">
-                <% }else{ %>
-                <input type="file" name="image" id="image" placeholder="Enter Image">
-                <% } %>
+                <input type="file" accept="image/*" name="image" id="image" placeholder="Enter Image">
               </div>
 
               <div class="form-group" id="bedNum">
                 <label>Bed number</label>
-                <input type="number" name="bedNum" value="<% if(editing) { %><%= product.bedNum %><% } %>" id="bedNum" placeholder="Enter Bed Number">
+                <input type="number" name="bedNum" min="0" value="<% if(editing) { %><%= product.bedNum %><% } %>" id="bedNum" placeholder="Enter Bed Number" required>
               </div>
 
               <div class="form-group" id="guestNum">
                 <label>Guest number</label>
-                <input type="number" name="guestNum" value="<% if(editing) { %><%= product.guestNum %><% } %>" id="guestNum" placeholder="Enter guestNum">
+                <input type="number" name="guestNum" min="0" value="<% if(editing) { %><%= product.guestNum %><% } %>" id="guestNum" placeholder="Enter guestNum" required>
               </div>
 
               <div class="form-group" id="price">
                 <label>Price</label>
-                <input type="number" name="price" value="<% if(editing) { %><%= product.price %><% } %>" id="price" placeholder="Enter Price">
+                <input type="number" name="price" min="0" value="<% if(editing) { %><%= product.price %><% } %>" id="price" placeholder="Enter Price" required>
               </div>
               <% if (editing) { %>
                 <input type="hidden" value="<%= product.id %>" name="productId">
@@ -89,5 +98,6 @@
         </div>
       </main>
     </div>
+    <script src="/js/add.js"></script>
   </body>
 </html>

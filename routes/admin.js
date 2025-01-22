@@ -15,7 +15,7 @@ router.get('/book', isAdmin, adminController.getBook);
 router.get('/review', isAdmin, adminController.getReview);
 router.get('/reserv', isAdmin, adminController.getReserv);
 
-router.post('/add-product', adminController.postAddProduct);
+router.post('/add-product' ,adminController.postAddProduct);
 router.post('/add-address', adminController.postAddProductAddress);
 router.post('/add-room', adminController.postAddProductRoom);
 router.post('/edit-product', adminController.postEditProduct);

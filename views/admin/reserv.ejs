@@ -31,6 +31,7 @@
             <h2>Reservation</h2>
             <div class="stats-grid">
                 <% for(let product of prods) { %>
+                  <% if(!product.history) {%>
                     <div class="stat-card">
                         <h4>Name</h4>
                         <p><%= product.name %></p>
@@ -53,6 +54,7 @@
                           </form>
                         </div>
                         </div>
+                <% } %>
                 <% } %>
               </div>
             </div>

@@ -53,15 +53,19 @@ const adminRoutes = require('./routes/admin');
 const mainRoutes = require('./routes/main');
 const route = require('./routes/router');
 const authRoutes = require('./routes/auth');
+const { AdminAdd } = require('./controllers/auth');
 
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(express.json());
+
 app.use(multer({
   storage: flStorage,
   fileFilter: flFilter
 }).single("image"))
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/image", express.static(path.join(__dirname, 'image')));
 app.use(express.static(path.join(__dirname, 'frontJS')));
@@ -105,7 +109,8 @@ sequelize
   // .sync({
   //   force: true
   // })
-  .then(() => {
+  .then(async() => {
+    await AdminAdd()
     app.listen(PORT, () => {
       console.log(`Listening on PORT: ${PORT}`);
     });

@@ -32,6 +32,7 @@
             <div class="stats-grid">
               <% if(prods.length > 0 ) {%>
               <% for(let product of prods) { %>
+                <% if(!product.history) { %>
               <div class="stat-card">
                 <h4>Check_in</h4>
                 <p><%= product.checkIn %></p>
@@ -62,6 +63,7 @@
                   </form>
                 </div>
               </div>
+              <% } %>
               <% } %>
               <% }else{ %>
                 <h3>There is no product.</h3>

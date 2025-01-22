@@ -10,7 +10,7 @@ const Review = sequelize.define("review", {
     autoIncrement: true,
 },
   name: Sequelize.STRING,
-  message: Sequelize.STRING
+  message: Sequelize.STRING,
 });
 
 module.exports = Review;

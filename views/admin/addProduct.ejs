@@ -19,8 +19,8 @@
             <li><a href="/admin/admin-product" data-section="dashboard">Admin</a></li>
             <li><a href="/admin/add-product" data-section="users" class="active">Add Product</a></li>
             <li><a href="/admin/reserv" data-section="users">Reservation</a></li>
-            <li><a href="/admin/book" data-section="products">Books</a></li>
-            <li><a href="/admin/review" data-section="products">Reviews</a></li>
+            <li><a href="/admin/book" data-section="products">Book</a></li>
+            <li><a href="/admin/review" data-section="products">Review</a></li>
           </ul>
         </nav>
       </aside>
@@ -33,7 +33,7 @@
           <div id="settings" class="section active">
             <h2>Add Product</h2>
             <form class="settings-form" action="/admin/<% if(editing) {%>edit-product<% }else{ %>add-product<% } %>" method="POST" enctype="multipart/form-data">
-              <select id="option" name="option">
+              <select style="font-size: medium;" id="option" name="option" onchange="handleSelect()">
                 <% if(editing){ %>
                   <option value="<%= product.option %>">
                       <%= product.option %>
@@ -44,32 +44,27 @@
                 <option value="History of Dashoguz">History of Dashoguz</option>
                 <option value="Comment">Comment</option>
                 <option value="Museum">Museum</option>
+                <option data-url="/admin/add-room" value="Room">Room</option>
+                <option data-url="/admin/add-address" value="Address">Address</option>
               </select>
-              <select id="lang" name="lang">
-                
+              <select style="font-size: medium;" id="lang" name="lang">
                 <option value="en">English</option>
                 <option value="ru">Russian</option>
               </select>
-              <button><a href="/admin/add-room">Room</a></button>
-              <button><a href="/admin/add-address">Address</a></button>
 
               <div class="form-group" id="title">
                 <label>Name</label>
-                <input type="text" value="<% if(editing) { %><%= product.title %><% } %>" id="title" name="title" placeholder="Enter website name">
+                <input required type="text" value="<% if(editing) { %><%= product.title %><% } %>" id="title" name="title" placeholder="Enter website name">
               </div>
 
               <div class="form-group" id="description">
                 <label>Description</label>
-                <input type="text" value="<% if(editing) { %><%= product.description %><% } %>" id="description" name="description" placeholder="Enter Description">
+                <input required type="text" value="<% if(editing) { %><%= product.description %><% } %>" id="description" name="description" placeholder="Enter Description">
               </div>
 
               <div class="form-group" id="image">
                 <label>Image</label>
-                <% if(editing) {%>
-                  <input type="text" name="image" id="image" value="<%= product.image %>">
-                <% }else{ %>
-                <input type="file" name="image" id="image" placeholder="Enter Image">
-                <% } %>
+                <input type="file" name="image" accept="image/*" id="image" placeholder="Enter Image" <% if(!editing  ){%>required<% } %>>
               </div>
               <% if (editing) { %>
                 <input type="hidden" value="<%= product.id %>" name="productId">
@@ -82,5 +77,6 @@
         </div>
       </main>
     </div>
+  <script src="/js/add.js"></script>
   </body>
 </html>
