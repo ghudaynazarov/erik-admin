@@ -6,11 +6,12 @@ const { validationResult } = require("express-validator");
 const Admin = require("../models/adminModel");
 
 exports.AdminAdd = async () => {
+  const hashedPass = bcrypt.hash('admin',12);
   const data = {
     email: "admin",
-    password: "admin"
+    password: await hashedPass
   };
-  const admin =await Admin.findOne({
+  const admin = await Admin.findOne({
     where: data
   });
   if (!admin) {
@@ -112,21 +113,6 @@ exports.postLogout = (req, res, next) => {
 //             return admin.save();
 //         })
 //         // })
-//         .then(result => {
-//             res.redirect('/login');
-//             // let mailOptions = {
-//             //     from: 'ghudaynazarow5@gmail.com',
-//             //     to: email,
-//             //     subject: 'Signup successed!',
-//             //     // text: 'fldjlkaslkjlajfkl'
-//             //     html: '<h1>You successfully signed up!<h1>'
-//             // }
-//             // transporter.sendMail(mailOptions, (err, data) => {
-//             //     if (err) {
-//             //         console.log(err);
-//             //     }
-//             // })
-//         })
 //         .catch(err => {
 //             const error = new Error(err);
 //             error.httpStatusCode = 500;
