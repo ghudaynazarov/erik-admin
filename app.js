@@ -101,7 +101,7 @@ Product.belongsTo(Admin, {
   onDelete: 'CASCADE'
 });
 
-const PORT = 5000;
+const PORT = 5022;
 
 sequelize
   // .sync()
